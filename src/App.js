@@ -21,7 +21,6 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <h1>Welcome to {config.appName}</h1>
         <Routes>
           <Route path="/" element={<Home config={config} />} />
           <Route path="/iframe" element={<IframeContent />} />

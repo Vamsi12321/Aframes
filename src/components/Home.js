@@ -1,10 +1,10 @@
 import React from "react";
 import IframeComponent from "./IframeComponent";
 
-function Home() {
+function Home({ config }) {
   return (
     <div>
-      <h1>Iframe</h1>
+      <h1>Welcome to {config.appName}</h1>
       <IframeComponent />
     </div>
   );
