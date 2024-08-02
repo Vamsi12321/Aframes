@@ -1,8 +1,7 @@
 import React from "react";
 
 const IframeComponent = () => {
-  const domain = window.location.hostname;
-  const iframeUrl = `https://proxzarai.netlify.app/iframe?pwd=${domain}`;
+  const iframeUrl = `/iframe`;
 
   return (
     <div>
