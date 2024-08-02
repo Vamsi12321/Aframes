@@ -1,7 +1,8 @@
 import React from "react";
 
 const IframeComponent = () => {
-  const iframeUrl = `/iframe?pwd=${window.location.hostname}`;
+  const domain = window.location.hostname;
+  const iframeUrl = `/iframe?pwd=${domain}`;
 
   return (
     <div>
