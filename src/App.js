@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import configs from "./config";
+import IframeContent from "./components/IframeContent";
+import Home from "./components/Home";
 
-function App() {
+const getDomainConfig = () => {
+  const hostname = window.location.hostname.toLowerCase();
+  return configs[hostname] || {};
+};
+
+const App = () => {
+  const [config, setConfig] = useState({});
+
+  useEffect(() => {
+    const domainConfig = getDomainConfig();
+    setConfig(domainConfig);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <h1>Welcome to {config.appName}</h1>
+        <Routes>
+          <Route path="/" element={<Home config={config} />} />
+          <Route path="/iframe" element={<IframeContent />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
